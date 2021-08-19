@@ -3,16 +3,17 @@
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
 
-    getJSONData(PRODUCTS_URL).then(function (resultObj) {
-        if (resultObj.status === "ok") {
-            loadProducts(resultObj.data);
+ getJSONData(PRODUCTS_URL).then (function (objResult) {
+        if (objResult.status === "ok") {
+            loadProducts(objResult.data);
         }
     })
 
-    function loadProducts (arregloProducto) {
+    function loadProducts (arregloProductoHtml) {
         let contenidoHtml = "";
-        for(let i = 0; i < arregloProducto.length; i++){
-            let product = arregloProducto[i];
+        for(let i = 0; i < arregloProductoHtml.length; i++){
+
+            let product = arregloProductoHtml[i];
                 contenidoHtml += `
                 <a href="product-info.html" class="list-group-item list-group-item-action">
                     <div class="row">
@@ -22,7 +23,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
                         <div class="col">
                             <div class="d-flex w-100 justify-content-between">
                                 <h4 class="mb-1">`+ product.name +`</h4>
-                                <small class="text-muted">` + product.productCount + ` artículos</small>
+                                <h3 class="text">`+ product.cost + `</h3>
+                                <h3 class="priceTag">`+ product.currency + ` </h3>
                             </div>
                             <p class="mb-1">` + product.description + `</p>
                         </div>
