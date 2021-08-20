@@ -14,10 +14,13 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <style>
-    html, body{
+    html,
+    body {
       height: 100%;
     }
-
+h2 {
+  color: #0487c4;
+}
     body {
       display: -ms-flexbox;
       display: flex;
@@ -34,26 +37,52 @@
       padding: 15px;
       margin: auto;
     }
+
+    .boton {
+      border-radius: 10px;
+      color: aliceblue;
+      background-color: tomato;
+    }
+
+    img {
+      width: 400px;
+      height: 220px;
+      border-radius: 50px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
   </style>
 </head>
 
 <body class="text-center">
   <div class="container p-5">
-      <img src="https://img.icons8.com/carbon-copy/100/000000/login-rounded-right.png"/>
+    <form action="Index.html">
+      <img id="imglogin" src="img/login.png" />
       <h2 class="">Inicio de sesión</h2>
       <br>
-      <label for="inputEmail" class="">Email</label>
-      <input type="email" id="inputEmail" class="" placeholder="Correo" required="" autofocus="">
+      <label for="inputEmail" id="correo"></label>
+      <input type="email" id="inputEmail" class="" placeholder="Correo" required autofocus="">
       <br>
-      <label for ="inputPasdword" class="">Contraseña</label>
-      <input type="password" id="inputPassword" class="" placeholder="Contraseña" required= "" autofocus="">
+      <label for="inputPasdword" class="contrasena"></label>
+      <input type="password" id="inputPassword" class="" placeholder="Contraseña" required autofocus="">
       <br>
-      <button id="singin" type="submit" style="border-radius: 10px; color: white; background-color: tomato;">Entrar</button>
+      <br>
+      <label>
+        <input type="checkbox" value="remember-me"> Recuerdame
+      </label>
+      <br>
+      <br>
+      <button id="singin" type="submit" class="boton">Entrar</button>
+    </form>
   </div>
 
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
 </body>
+
 </html>
 
 
+<!--https://img.icons8.com/carbon-copy/100/000000/login-rounded-right.png-->
