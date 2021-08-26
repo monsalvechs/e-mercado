@@ -17,6 +17,9 @@ document.addEventListener("DOMContentLoaded", function() {
       alert('La clave no es válida');
       return;
     }
+    
+    localStorage.setItem('User-Logged', JSON.stringify({email: inputEmail.value}));
+
     this.submit();
   }
 /*var element = document.getElementsById('containerp-5-1'){
