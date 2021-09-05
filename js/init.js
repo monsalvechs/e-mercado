@@ -55,4 +55,4 @@ document.addEventListener("DOMContentLoaded", function(e){
     infoUser.innerText = infoUser.innerText + '' + userLogged.email;
   }
 
-});
+}); 
