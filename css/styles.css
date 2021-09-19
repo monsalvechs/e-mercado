@@ -139,3 +139,46 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.img {
+
+margin-left: auto; 
+
+margin-right: auto;
+
+}
+.checked {
+  color: orange;
+}
+
+#productoInfo{
+  padding-left: 300px;
+}
+.fw-bold{
+font-weight: bold;
+}
+.list-group-item{
+  background:azure;
+}
+.star-rating {
+  direction: rtl;
+  display: inline-block;
+  padding: 20px
+}
+
+.star-rating input[type=radio] {
+  display: none
+}
+
+.star-rating label {
+  color: rgb(133, 142, 192);
+  font-size: 50px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label,
+.star-rating input[type=radio]:checked ~ label {
+  color: #ffbf00
+}

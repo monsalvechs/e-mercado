@@ -56,7 +56,7 @@ function loadProducts() {
                                 <h4 class="mb-1">`+ product.name + `</h4>
                                 <h3 class="text">`+ product.cost + `</h3>
                                 <h3 class="priceTag">`+ product.currency + ` </h3>
-                                <small class="text-muted">`+product.soldCount+ ` vendidos</small>
+                                <small class="text-muted">`+product.soldCount+ ` Vendidos</small>
                             </div>
                             <p class="mb-1">` + product.description + `</p>
                         </div>
@@ -111,8 +111,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
-        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
-        //de productos por categoría.
+        
         minCount = document.getElementById("rangeFilterCountMin").value;
         maxCount = document.getElementById("rangeFilterCountMax").value;
 
@@ -126,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
             maxCount = parseInt(maxCount);
         }
-        else{ c          
+        else{         
             maxCount = undefined;
         }
 
