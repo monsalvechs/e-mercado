@@ -1,10 +1,15 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
+var array1 = []
+var array2 = [
+  1,
+  3,
+]
 function showProducto(prod) {
-    let info = "";
+  let info = "";
 
-    info += `
+  info += `
     <div class="col">
     <h1 id= "productoInfo"> ${prod.name}</h1>
     </div>
@@ -55,11 +60,11 @@ function showProducto(prod) {
     <br>
     <br>
     `
-    document.getElementById("contenido").innerHTML = info;
+  document.getElementById("contenido").innerHTML = info;
 }
 function showComentario(coment) {
-    let comen = "";
-    comen += `
+  let comen = "";
+  comen += `
 
     <ol class="list-group list-group-numbered" id="list-coment">
     <li class="list-group-item d-flex justify-content-between align-items-start">
@@ -97,41 +102,59 @@ function showComentario(coment) {
   </ol>
 `;
 
-    document.getElementById("coment").innerHTML = comen;
+  document.getElementById("coment").innerHTML = comen;
 }
+function showRelateProduct() {
+  let product = "";
 
+  for (i = 0; i < array1.length; i++){
+    let producto = array1[array2[i]]
+
+    product += `
+    <a href="product-info.html" class="list-group-item list-group-item-action">
+    <div class="row">
+        <div class="col-3">
+            <img src="` + producto.imgSrc + `" alt="` + producto.description + `" class="img-thumbnail">
+        </div>
+        <div class="col">
+            <div class="d-flex w-100 justify-content-between">
+                <h4 class="mb-1">`+ producto.name + `</h4>
+                <h3 class="text">`+ producto.cost + `</h3>
+                <h3 class="priceTag">`+ producto.currency + ` </h3>
+                <small class="text-muted">`+producto.soldCount+ ` Vendidos</small>
+            </div>
+            <p class="mb-1">` + producto.description + `</p>
+        </div>
+    </div>
+</a>`
+   
+    
+    document.getElementById("related").innerHTML = product;
+    
+  }
+}
 document.addEventListener("DOMContentLoaded", function (e) {
 
-    getJSONData(PRODUCT_INFO_URL).then(function (objResult) {
+  getJSONData(PRODUCT_INFO_URL).then(function (objResult) {
 
-        if (objResult.status === "ok") {
+    if (objResult.status === "ok") {
 
-            showProducto(objResult.data);
+      showProducto(objResult.data);
 
-            getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (result) {
-                if (result.status === "ok") {
-                    showComentario(result.data);
-                }
-            });
+      getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (result) {
+        if (result.status === "ok") {
+          showComentario(result.data);
         }
-    });
+      });
+    }
+  });
 
+  getJSONData(PRODUCTS_URL).then(function(objResult){
+    if (objResult.status === "ok"){
+      array1 = objResult.data
+      showRelateProduct(array1);
+    }
+  });
 });
-//` + prod.images[0] + `
 
-/* getJSONData(PRODUCT_INFO_URL).then(function (objResult) {
-
-        if (objResult.status === "ok") {
-
-            showProducto(objResult.data);
-        }
-    });
-
-
-      arraycoment.forEach(function (coment) {
-        comentario += '<p>' + coment.user + '</p>';
-        comentario += '<p>' + coment.description + '</p>';
-
-
-    });*/
 
