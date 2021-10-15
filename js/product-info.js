@@ -1,11 +1,7 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-var array1 = []
-var array2 = [
-  1,
-  3,
-]
+
 function showProducto(prod) {
   let info = "";
 
@@ -104,10 +100,20 @@ function showComentario(coment) {
 
   document.getElementById("coment").innerHTML = comen;
 }
+
+var array1 = [];
+  var array2 = [
+    1,
+    3,
+  ];
+
 function showRelateProduct() {
+
+
   let product = "";
 
   for (i = 0; i < array1.length; i++){
+    
     let producto = array1[array2[i]]
 
     product += `
