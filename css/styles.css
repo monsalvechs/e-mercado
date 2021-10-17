@@ -185,8 +185,32 @@ font-weight: bold;
 
 /*cart*/ 
 
+.padre{
+  padding-top: 2rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
+}
+
 .cartContainer{
   display: flex;
   align-items: center;
+}
 
+#imageCart{
+  width: 180px;
+  height: fit-content;
+}
+
+.costoSub1{
+  display: flex;
+}
+
+.containerPadre .container{
+  width: 100%;
+}
+
+.containerHijo {
+  background-color: #e9ecef;
+  border-radius: 5px;
+  text-align: center
 }
