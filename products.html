@@ -23,7 +23,8 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="info-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="info-user" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="my-profile.html">Perfil</a>
@@ -36,47 +37,47 @@
   <div class="text-center p-4">
     <h2>Productos</h2>
     <p class="lead">Verás aquí todos los productos del sitio.</p>
-</div>
+  </div>
   <div class="row">
     <div class="col text-right">
-        <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
-            <label class="btn btn-light active" id="sortAsc">
-                <input type="radio" name="options" autocomplete="off" checked="">MIN-MAX
-            </label>
-            <label class="btn btn-light" id="sortDesc">
-                <input type="radio" name="options" autocomplete="off">MAX-MIN
-            </label>
-            <label class="btn btn-light" id="sortByCount">
-                <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Cant.
-            </label>
-        </div>
+      <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+        <label class="btn btn-light active" id="sortAsc">
+          <input type="radio" name="options" autocomplete="off" checked="">MIN-MAX
+        </label>
+        <label class="btn btn-light" id="sortDesc">
+          <input type="radio" name="options" autocomplete="off">MAX-MIN
+        </label>
+        <label class="btn btn-light" id="sortByCount">
+          <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Cant.
+        </label>
+      </div>
     </div>
-</div>
+  </div>
   <div class="row justify-content-end">
     <div class="col-md-6"></div>
-      <div class="col-md-6 col-sm-12 mb-1 container">
-        <div class="row container p-0 m-0">
-          <div class="col">
-            <p class="font-weight-normal text-right my-2">Prec.</p>
-          </div>
-          <div class="col">
-            <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
-          </div>
-          <div class="col">
-            <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
-          </div>
-          <div class="col-3 p-0">
-            <div class="btn-group" role="group">
-              <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-              <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
-            </div>
+    <div class="col-md-6 col-sm-12 mb-1 container">
+      <div class="row container p-0 m-0">
+        <div class="col">
+          <p class="font-weight-normal text-right my-2">Prec.</p>
+        </div>
+        <div class="col">
+          <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+        </div>
+        <div class="col">
+          <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+        </div>
+        <div class="col-3 p-0">
+          <div class="btn-group" role="group">
+            <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+            <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
           </div>
         </div>
       </div>
+    </div>
   </div>
-  <div class="container p-5">
-    <div class="list-group" id="prod-list-container"></div>
-  </div>
+  <div class="grid-container">
+    <div class="row" id="prod-list">
+    </div>
   </div>
   <footer class="text-muted bg-light">
     <div class="container">
@@ -85,7 +86,6 @@
       </p>
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
   </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">

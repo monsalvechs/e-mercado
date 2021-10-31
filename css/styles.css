@@ -214,3 +214,48 @@ font-weight: bold;
   border-radius: 5px;
   text-align: center
 }
+.form-group #premium {
+  text-align: center;
+ font-weight: bolder;
+ background-color: rgb(173, 243, 164);
+}
+.form-group #express {
+  text-align: center;
+  font-weight: bolder;
+  background-color: rgb(240, 129, 134);
+}
+.form-group #standar{
+  text-align: center;
+  font-weight: bolder;
+  background-color: rgb(238, 221, 94);
+}
+.form-group #efectivo{
+  text-align: center;
+  background-color: rgb(238, 220, 220);
+}
+.form-group #tarjeta{
+  text-align: center;
+  background-color: rgb(225, 221, 163);
+}
+
+
+/*profile*/
+
+
+.containerprofile{
+  padding-top: 1rem;
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+#titleprofile{
+  padding-top: 3rem;
+  padding-left: 5rem;
+}
+
+/*--------------------cartgroup-----------------*/
+
+
+.grid-container{
+  
+}
