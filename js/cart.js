@@ -26,7 +26,7 @@ function showCart(array) {
           <div class="input-group mb-3">
           <div class="input-group-append">
 
-          <input type="number" onchange="calcsubtotal(${cart.unitCost},${i})" id="cantidad${i}" value = "1" min="1" max="5">
+          <input type="number" class="form-out" onchange="calcsubtotal(${cart.unitCost},${i})" id="cantidad${i}"  min="1" max="5">
           
           
           <label class="input-group-text" for="inputGroupSelect02"><td><h4 id= "costoSubTotal${i}">${cart.unitCost}</h4>
@@ -46,84 +46,111 @@ function showCart(array) {
 function calcsubtotal(unitCost, i) {
   let cantidad = document.getElementById("cantidad" + i).value;
   document.getElementById("costoSubTotal" + i).innerHTML = parseInt(unitCost * cantidad);
+  document.getElementById("totaly" + i).innerHTML = parseInt(unitCost); x
 }
 
 function cartInfo() {
   let info = "";
   info += `
-  <h5>Resumen de compra</h5>
-  <br>
-  <!-- Button trigger modal -->
-<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#exampleModal">
-  Envio
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Formulario de envio</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <form>
-      <div class="form-group">
-    <label for="inputAddress">Dirección</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Email</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-      </div>
-      <div class="form-group">
-        <label for="exampleFormControlSelect1">Tipo de envío</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-        <option hidden selected>Selecciona una opción</option>
-          <option id="premium">Premium 2-5 dias 15% sobre el subtotal</option>
-          <option id="express">Express 7-8 días 7% sobre el subtotal</option>
-          <option id="standar">Standard 12-15 días 5% sobre el subtotal</option>
-        </select>
-      </div>
-    </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">guardar cambios</button>
-      </div>
-    </div>
-  </div>
-</div>
+  <!--total-->
 <br>
-<br>
-  <form>
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Forma de pago</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-    <option hidden selected>Selecciona una opción</option>
-      <option id="efectivo">Efectivo</option>
-      <option id="tarjeta">Tarjeta</option>
-    </select>
-  </div>
-</form>
-
-<div>
-<h4>Total</h4>
-<h4 id ="totaly"></h4>
-  <button type="button" class="btn btn-success btn-sm btn-block">Finalizar compra</button>
+<h5>Total</h5>
+<h4 id ="totaly">${cart.unitCost}</h4>
+  <button type="submit" class="btn btn-success btn-block">Finalizar compra</button>
   `
-
-  document.getElementById("cartInfo").innerHTML = info;
+  document.getElementById("cartTotal").innerHTML = info;
 }
 function calcTotal(unitCost, i) {
   let Total = document.getElementById("cantidad" + i).value;
-  document.getElementById("totaly").innerHTML = (unitCost + Total);
+  document.getElementById("totaly").innerHTML = parseInt(unitCost + Total);
 }
+function miValidacion() {
+  let flag = true;
+  let mensaje = "";
+  let elementosDentro = document.getElementsByClassName("form-Inside");
+  let outformulary = document.getElementsByClassName("form-out");
+  document.getElementById("feedback").innerHTML = "";
+
+  let cuentoDentro = 0;
+  for (let i = 0; i < elementosDentro.length; i++) {
+    const element = elementosDentro[i];
+    if (element.value == "") {
+      cuentoDentro += 1;
+    }
+  }
+  if (cuentoDentro > 1) {
+    flag = false;
+    msg += "-Solo puede haber un campo vacío dentro del formulario <br>"
+  }
+  //Solo 1 vacío fuera:
+  let cuentoFuera = 0;
+  for (let i = 0; i < elementosFuera.length; i++) {
+    const element = elementosFuera[i];
+    if (element.value == "") {
+      cuentoFuera += 1;
+    }
+  }
+
+  if (cuentoFuera > 1) {
+    flag = false;
+    msg += "-Solo puede haber un campo vacío fuera del formulario <br>"
+  }
+
+
+  //Contenido igual:
+  let iguales = false;
+  for (let i = 0; i < elementosDentro.length; i++) {
+    const elementIn = elementosDentro[i];
+    for (let i = 0; i < elementosFuera.length; i++) {
+      const elementOut = elementosFuera[i];
+      if (elementIn.value !== "" && elementIn.value === elementOut.value) {
+        iguales = true;
+      }
+    }
+  }
+  if (!iguales) {
+    flag = false;
+    msg += "-El contenido de uno de los campos de adentro debe ser igual al de uno de los de afuera <br>"
+  }
+
+  //Campo min y max
+  let num = false;
+  for (let i = 0; i < elementosFuera.length; i++) {
+    const elementOut = elementosFuera[i];
+    if (parseInt(elementOut.value) > 5 && parseInt(elementOut.value) < 10) {
+      num = true;
+    }
+  }
+  if (!num) {
+    flag = false;
+    msg += "-Uno de los campos fuera del formulario debe tener un valor númerico entre 6 y 9<br>"
+  }
+
+  //minlength maxlength
+  let caracteres = false;
+  for (let i = 0; i < elementosDentro.length; i++) {
+    const elementIn = elementosDentro[i];
+    if (elementIn.value.length > 7 && elementIn.value.length < 15) {
+      caracteres = true;
+    }
+  }
+  if (!caracteres) {
+    flag = false;
+    msg += "-Uno de los campos dentro del formulario debe tener entre 8 y 14 caracteres<br>"
+  }
+
+  document.getElementById("feedback").innerHTML = msg;
+  return flag;
+
+}
+
+function selcEnvio({
+
+})
+
 document.addEventListener("DOMContentLoaded", function (e) {
 
-  getJSONData(CART_INFO_URL_2).then(function (objResult) {
+  getJSONData(CART_INFO_URL).then(function (objResult) {
     if (objResult.status === "ok") {
       cartArray = objResult.data.articles;
 
@@ -131,8 +158,17 @@ document.addEventListener("DOMContentLoaded", function (e) {
       showCart(cartArray);
       cartInfo();
       calcsubtotal();
+      calcTotal();
+      miValidacion();
     }
   });
 
-
+if (document.querySelector('input[name="envio"]')) {
+  document.querySelectorAll('input[name="envio"]').forEach((elem) => {
+    elem.addEventListener("change", function(event) {
+      var item = event.target.value;
+      console.log(item);
+    });
+  });
+}
 });

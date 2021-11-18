@@ -70,13 +70,134 @@
         </div>
         <div class=" resumen col-md-5">
           <div class="containerHijo">
-          <div id="cartInfo"></div>
+            <div id="cart-Info">
+              <h5>Resumen de compra</h5>
+              <br>
+              <h5>Envío</h5>
+              <form id="myForm">
+                <div class="form-group">
+                  <label for="inputAddress">Dirección</label>
+                  <input type="text" class="form-control form-Inside" id="inputAddress" placeholder="1234 Main St">
+                </div>
+                <div class="form-group">
+                  <label for="label-Pais">País</label>
+                  <input type="text" class="form-control form-Inside" id="label-Pais" placeholder="País">
+                </div>
+                <div class="form-group row">
+                  <div class="col-lg-12">
+                    <p>Seleccionar tu tipo de envío</p>
+                    <br>
+                    <input type="radio" id="premium" name="envio" value="Premium">
+                      <label for="premium">Premium</label>
+                      <input type="radio" id="express" name="envio" value="Express">
+                      <label for="express">Express</label>
+                      <input type="radio" id="standard" name="envio" value="Standard">
+                      <label for="standard">Standard</label>
+
+                  </div>
+                </div>
+                <br>
+                <h5>Metodo de pago</h5>
+                <button type="button" class="btn btn-success" data-toggle="modal"
+                  data-target="#exampleModal">Tarjeta</button>
+                <button type="button" class="btn btn-success" data-toggle="modal"
+                  data-target="#staticBackdrop">Transferencia</button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Tarjeta</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="form-group owner">
+                          <label for="owner">Titular</label>
+                          <input type="text" class="form-control form-Inside" id="owner">
+                        </div>
+                        <div class="form-group CVV">
+                          <label for="cvv">CVV</label>
+                          <input type="text" class="form-control form-Inside" id="cvv">
+                        </div>
+                        <div class="form-group" id="card-number-field">
+                          <label for="cardNumber">Numero de Tarjeta</label>
+                          <input type="text" class="form-control form-Inside" id="cardNumber">
+                        </div>
+                        <div class="form-group" id="expiration-date">
+                          <label>Vencimiento</label>
+                          <select class="form-Inside">
+                            <option value="01">Enero</option>
+                            <option value="02">Febrero</option>
+                            <option value="03">Marzo</option>
+                            <option value="04">Abril</option>
+                            <option value="05">Mayo</option>
+                            <option value="06">Junio</option>
+                            <option value="07">Julio</option>
+                            <option value="08">Augosto</option>
+                            <option value="09">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                          </select>
+                          <select class="form-Inside">
+                            <option value="16"> 2022</option>
+                            <option value="17"> 2023</option>
+                            <option value="18"> 2034</option>
+                            <option value="19"> 2025</option>
+                            <option value="20"> 2026</option>
+                            <option value="21"> 2027</option>
+                          </select>
+                        </div>
+                        <div class="form-group" id="credit_cards">
+                          <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/556px-Visa_Inc._logo.svg.png"
+                            id="visa" width="40px" height="20px">
+                          <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/MasterCard_Logo.svg/2560px-MasterCard_Logo.svg.png"
+                            id="mastercard" width="40px" height="20px">
+                          <img
+                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/American_Express_logo_%282018%29.svg/1200px-American_Express_logo_%282018%29.svg.png"
+                            id="amex" width="40px" height="40px">
+                        </div>
+                        <div class="form-group" id="pay-now">
+                          <button type="submit" class="btn btn-success btn-sm" id="confirm-purchase">Confirmar</button>
+                        </div>
+              </form>
+            </div>
+          </div>
         </div>
-        </div>
-        
       </div>
+
+      <!--segundo modal-->
+
+      <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group" id="account-number-field">
+                <label for="accountNumber">Numero de cuenta</label>
+                <input type="text" class="form-control" id="accountNumber">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success btn-sm" id="confirm-purchase">Confirmar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="cartTotal"></div>
     </div>
   </div>
+  <div class="row m-3 p-1 g-3" id="feedback" style="color: red;"></div>
 
   <div id="spinner-wrapper">
     <div class="lds-ring">

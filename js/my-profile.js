@@ -16,7 +16,7 @@ function saveDatos(evento) {
 function showdatos() {
     let userData = localStorage.getItem('User-Datos');
 
-    let printProfile = document.getElementById("txtNombre");
+    let printProfile = document.getElementById("txtNombreuno");
 
     let printProfile2 = document.getElementById("txtApellidouno");
 
@@ -29,6 +29,7 @@ function showdatos() {
 
 
     userData = JSON.parse(userData);
+    console.log(userData);
 
     printProfile.innerHTML = printProfile.innerHTML + '' + userData.name;
 
@@ -75,12 +76,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
     document.getElementById("formularioDos").addEventListener('submit', saveDatos);
 
     showdatos();
+    () => {
+        let preview = document.getElementById('foto');
+        let laImagen = JSON.parse(localStorage.getItem('laimagen'));
+    
+        if (laImagen != null) {
+            preview.src = laImagen;
+        }
 
-}, () => {
-    let preview = document.getElementById('foto');
-    let laImagen = JSON.parse(localStorage.getItem('laImagen'));
-
-    if (laImagen != null) {
-        preview.src = laImagen;
-    }
-});
+    }});
