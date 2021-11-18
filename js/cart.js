@@ -26,11 +26,11 @@ function showCart(array) {
           <div class="input-group mb-3">
           <div class="input-group-append">
 
-          <input type="number" class="form-out" onchange="calcsubtotal(${cart.unitCost},${i})" id="cantidad${i}"  min="1" max="5">
+          <input type="number" class="form-out" onchange="calcsubtotal(${cart.unitCost}, ${i})" id="cantidad${i}"  min="1" max="5">
           
           
           <label class="input-group-text" for="inputGroupSelect02"><td><h4 id= "costoSubTotal${i}">${cart.unitCost}</h4>
-          <h4>${cart.currency}</h4></label>
+          <h4 id="currency${i}">${cart.currency}</h4></label>
           </div>
           </div>
                 
@@ -43,23 +43,27 @@ function showCart(array) {
   };
 };
 
-function calcsubtotal(unitCost, i) {
+function calcsubtotal(unitCost, i) { 
   let cantidad = document.getElementById("cantidad" + i).value;
-  document.getElementById("costoSubTotal" + i).innerHTML = parseInt(unitCost * cantidad);
-  document.getElementById("totaly" + i).innerHTML = parseInt(unitCost); x
+  let costoXCantidad = parseInt(unitCost * cantidad);
+
+  let currency = document.getElementById("currency" + i).innerHTML
+
+  document.getElementById("costoSubTotal" + i).innerHTML = costoXCantidad
+  //Tomo el subtotal de H4, en un principio es 0
+  if(currency == "USD"){
+    costoXCantidad = costoXCantidad*45;
+  }
+
+  let subtotal = parseInt(document.getElementById("subtotal").innerHTML);
+  
+  subtotal += costoXCantidad;
+  document.getElementById("subtotal").innerHTML = subtotal;
+   
 }
 
-function cartInfo() {
-  let info = "";
-  info += `
-  <!--total-->
-<br>
-<h5>Total</h5>
-<h4 id ="totaly">${cart.unitCost}</h4>
-  <button type="submit" class="btn btn-success btn-block">Finalizar compra</button>
-  `
-  document.getElementById("cartTotal").innerHTML = info;
-}
+
+
 function calcTotal(unitCost, i) {
   let Total = document.getElementById("cantidad" + i).value;
   document.getElementById("totaly").innerHTML = parseInt(unitCost + Total);
@@ -144,31 +148,55 @@ function miValidacion() {
 
 }
 
-function selcEnvio({
+function selectEnvio(tipoDeEnvio) {
+let porcentaje;
 
-})
+  switch (tipoDeEnvio) {
+    case "Premium":
+      porcentaje = 1,15;
+      break;
+    case "Express":
+      porcentaje= 1,07;
+      break;
+    case "Standard":
+      porcentaje= 1,05;
+      break;
 
+    default:
+      porcentaje = 1;
+      break;
+  }
+
+
+  document.getElementById("")
+
+}
 document.addEventListener("DOMContentLoaded", function (e) {
 
-  getJSONData(CART_INFO_URL).then(function (objResult) {
+  getJSONData(CART_INFO_URL_2).then(function (objResult) {
     if (objResult.status === "ok") {
       cartArray = objResult.data.articles;
-
-
       showCart(cartArray);
-      cartInfo();
-      calcsubtotal();
       calcTotal();
       miValidacion();
     }
   });
+  let form = document.getElementById("myForm");
+  form.addEventListener('submit', function (event) {
+    if (!miValidacion()) {
+      event.preventDefault()
+      event.stopPropagation()
+    } else {
+      document.getElementById("feedback").innerHTML = "";
+    }
+  })
 
-if (document.querySelector('input[name="envio"]')) {
+
   document.querySelectorAll('input[name="envio"]').forEach((elem) => {
-    elem.addEventListener("change", function(event) {
+    elem.addEventListener("change", function (event) {
       var item = event.target.value;
       console.log(item);
     });
   });
-}
+
 });
